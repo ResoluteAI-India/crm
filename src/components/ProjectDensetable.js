@@ -277,26 +277,7 @@ export default function Projectdensetable() {
   };
 
   useEffect(() => {
-    const empCollectionRef= query(
-      collection(db, "projects"),
-      orderBy("created", "desc")
-    );
-    onSnapshot(
-      empCollectionRef,
-      (snapshot) => {
-        setRoles(
-          snapshot.docs.map((doc) => ({
-            id: row.id,
-           
-          }))
-        );
-      },
-      (onError) => {
-        alert(onError.message);
-      }
-    );
-    //alert(roles.le);
-  }, []);
+    getUsers()})
 
 
   

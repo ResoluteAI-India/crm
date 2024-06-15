@@ -30,7 +30,7 @@ export default function Dashtable() {
             <b>Total client</b>
           </Typography>
           <Typography component="div" variant="h5">
-          10
+          50
           </Typography>
         </CardContent>
       </Box>
@@ -50,7 +50,7 @@ export default function Dashtable() {
           <b>Total Projects</b>
           </Typography>
           <Typography component="div" variant="h5">
-            15
+            51
           </Typography>
         </CardContent>
       </Box>
@@ -70,7 +70,7 @@ export default function Dashtable() {
            <b>On going Projects</b>
           </Typography>
           <Typography component="div" variant="h5">
-           7
+           52
           </Typography>
         </CardContent>
       </Box>
