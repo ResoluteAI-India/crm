@@ -1,0 +1,20 @@
+.maindiv{
+    margin-top: 50px;
+}
+#mycards{
+    margin-top: 5px;
+    height: 100px;
+    width: 90%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card:hover{
+    box-shadow: 1px 1px 1px 1px gray ;
+}
+
+#mytable{ 
+    /* background-color: skyblue; */
+    height: 315px;
+    width: 88%;
+}
