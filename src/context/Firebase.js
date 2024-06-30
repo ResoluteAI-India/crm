@@ -4,16 +4,16 @@ import {getAuth,createUserWithEmailAndPassword,signInWithEmailAndPassword,signOu
 import { getFirestore } from "firebase/firestore";
 
 
-
 const FirebaseContext = createContext(null)
 const firebaseConfig = {
-    apiKey: "AIzaSyB_yT8nx8i85pXYjPJIGpwVimRmPjhYWXQ",
-    authDomain: "first-project-3038d.firebaseapp.com",
-    projectId: "first-project-3038d",
-    storageBucket: "first-project-3038d.appspot.com",
-    messagingSenderId: "1072010730544",
-    appId: "1:1072010730544:web:ce31c35235d532a96221f5"
+    apiKey: "AIzaSyARxGVGBbiT9VszNKKs3B4NPQadqIkOj-M",
+  authDomain: "raisw-control-tower.firebaseapp.com",
+  projectId: "raisw-control-tower",
+  storageBucket: "raisw-control-tower.appspot.com",
+  messagingSenderId: "223819894078",
+  appId: "1:223819894078:web:961ce0eacdf142fa99b06f"
   };
+  
 
 export const useFirebase = () => useContext(FirebaseContext)
 
@@ -25,30 +25,13 @@ export  const  db = getFirestore(firebaseApp);
  
 
 export const FirebaseProvider = (props)=>{
-const signupwithemailandpassword = (email,password)=>
- createUserWithEmailAndPassword(firebaseAuth,email,password)
+const signupwithemailandpassword = (email,password)=>createUserWithEmailAndPassword(firebaseAuth,email,password)
+ const loginwithemailandpassword = (email,password) => signInWithEmailAndPassword(firebaseAuth,email,password)
+ const signoutuser=()=>signOut(firebaseAuth)
 
-const loginwithemailandpassword = (email,password) => 
-    signInWithEmailAndPassword(firebaseAuth,email,password)
-
-const signoutuser=()=>signOut(firebaseAuth)
     return(
         <FirebaseContext.Provider value={{signupwithemailandpassword,loginwithemailandpassword,signoutuser,db}}>
             {props.children}
         </FirebaseContext.Provider>
     )
 }
-
-
-
-  
-
-
-
-
-
-
-
-
-
-    

@@ -5,7 +5,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 
-import {useFirebase} from "../context/Firebase";
+import {useFirebase} from "../../context/Firebase";
 import { useNavigate } from 'react-router';
 
 export default function Accountbutton() {
