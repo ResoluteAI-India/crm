@@ -1,0 +1,57 @@
+.signup{
+    margin:80px 0px;
+ width:350px;
+ height:350px;
+}
+.sform{
+    margin:-100px 0px;
+    display: inline-table;
+  
+}
+.textboxcolor{
+    border: 0.5px solid red;
+
+}
+.textcolor{
+    color: red;
+}
+
+.email_error{
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    color:red;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.password_error{
+    position: absolute;
+    top: 100%;
+    left: 2px;
+    color:red;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+#email_error{
+    color: red;
+    position: absolute;
+    top: 37%;
+    left: 43%;
+    font-size: 16px;
+    font-weight: 400;
+
+}
+#password_error{
+    color: red;
+    position: absolute;
+    top:50%;
+    left: 43%;
+    font-size: 16px;
+    font-weight: 400;
+}
+#email_field,#password_field{
+    margin-bottom: 40px;
+}
+
