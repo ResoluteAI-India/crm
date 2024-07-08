@@ -1,162 +1,194 @@
 import * as React from 'react';
+import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
+import MuiDrawer from '@mui/material/Drawer';
+import MuiAppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import List from '@mui/material/List';
+import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Autocomplete from '@mui/material/Autocomplete';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import { styled } from '@mui/material/styles';
-import Button from '@mui/material/Button';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import Divider from '@mui/material/Divider';
+import IconButton from '@mui/material/IconButton'; 
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/MoveToInbox';
+import MailIcon from '@mui/icons-material/Mail';
+import ListAltIcon from '@mui/icons-material/ListAlt';
+import PersonIcon from '@mui/icons-material/Person';
+import logo from "../../images/logo.jpg"
+import Accountbutton from '../MiniComponents/Accountbutton';
+import Breadcrumbs from '../MiniComponents/Breadcrumbs';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import ArticleIcon from '@mui/icons-material/Article';
+import Addpage from './Addpage';
 
-const VisuallyHiddenInput = styled('input')({
-  clip: 'rect(0 0 0 0)',
-  clipPath: 'inset(50%)',
-  height: 1,
-  width: '53ch',
-  overflow: 'hidden',
-  position: 'absolute',
-  bottom: 0,
-  left: 0,
-  whiteSpace: 'nowrap',
-  
+const drawerWidth = 240;
 
+const openedMixin = (theme) => ({
+  width: drawerWidth,
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: 'hidden',
 });
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-  </Box>
+const closedMixin = (theme) => ({
+  transition: theme.transitions.create('width', {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: 'hidden',
+  width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.up('sm')]: {
+    width: `calc(${theme.spacing(8)} + 1px)`,
+  },
+});
+
+const DrawerHeader = styled('div')(({ theme }) => ({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'flex-end',
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== 'open',
+})(({ theme, open }) => ({
+  zIndex: theme.zIndex.drawer + 1,
+  transition: theme.transitions.create(['width', 'margin'], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  ...(open && {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['width', 'margin'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.enteringScreen,
+    }),
+  }),
+}));
+
+const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' })(
+  ({ theme, open }) => ({
+    width: drawerWidth,
+    flexShrink: 0,
+    whiteSpace: 'nowrap',
+    boxSizing: 'border-box',
+    ...(open && {
+      ...openedMixin(theme),
+      '& .MuiDrawer-paper': openedMixin(theme),
+    }),
+    ...(!open && {
+      ...closedMixin(theme),
+      '& .MuiDrawer-paper': closedMixin(theme),
+    }),
+  }),
 );
 
 export default function Addproject() {
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(true);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
   return (
-    <>
-    <Typography variant="h4" component="div" style={{marginLeft:"-810px",marginBottom:"10px"}}>
-         <b>Add Project</b>
-        </Typography>
-    <Card sx={{ Width: "40%" ,marginTop:"45px"}}>
-         <Typography variant="h5" component="div" style={{marginLeft:"-830px"}}>
-        Project Details
-        </Typography>
-      <CardContent>
-      <Box
-      component="form"
-      sx={{'& > :not(style)': { m: 2, width: '53ch' },}}
-      noValidate
-      autoComplete="off"
-    >
-      <TextField id="outlined-basic"  required label="Project Name" variant="outlined" style={{marginLeft:"-500px"}} />
-      <Autocomplete
-        disablePortal
-        id="combo-box-demo"
-      // options={top100Films}
-      style={{width: '50ch',marginLeft:"535px",marginTop:"-70px",width: '53ch'}}
-        renderInput={(params) => <TextField {...params} label="Client Name" />}
-      />
-      <div className="date" >
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={['DatePicker']} sx={{marginTop:"10px",marginLeft:"-260px"}}>
-        <DatePicker label="Agreement start date"  sx={{width: '53ch'}} />
-      </DemoContainer>
-    </LocalizationProvider>
-
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={['DatePicker']} sx={{marginTop:"-64px",marginLeft:"260px",marginRight:"-275px"}}>
-        <DatePicker label="Agreement end date" sx={{width: '53ch'}} />
-      </DemoContainer>
-    </LocalizationProvider>
-      </div>
-    
-      <TextField id="outlined-basic"  required label="Description" variant="outlined" sx={{'& > :not(style)':  { m: 2, width: '111ch',height:"13ch", marginTop:"0px",marginLeft:"-10px"},}}/>
-      <TextField id="outlined-basic"  required label="Status" variant="outlined" sx={{'& > :not(style)': { m: 2, marginTop:"145px",marginLeft:"-515px",marginRight:"510px"},}} />
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar position="fixed" open={open}  style={{backgroundColor:"white"}}>
+        <Toolbar>
+          <IconButton
+            color="inherit"
+            aria-label="open drawer"
+            onClick={handleDrawerOpen}
+            edge="start"
+            sx={{
+              marginRight: 5,
+              ...(open && { display: 'none' }),
+            }}
+          >
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" noWrap component="div">
+            ResoluteAI
+          </Typography>
+          <Accountbutton />
+        </Toolbar>
+      </AppBar>
+      <Drawer variant="permanent" open={open}>
+        <DrawerHeader>
+        <img src={logo} alt=""  className='mylogo' style={{height:"60px",width:"180px"}}/>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+          </IconButton>
+        </DrawerHeader>
+        <List style={{color:"black"}} >
+          {['Dashboard', 'Log'].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: 'block' }} >
+              <ListItemButton href={`/${text.toLowerCase()}`} 
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon style={{color:"red"}}
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {index % 2 === 0 ? <DashboardIcon /> : <ArticleIcon />  }
+                </ListItemIcon>
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <List style={{color:"black",marginTop:"-20px"}}>
+          {['Client', 'Project'].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+              <ListItemButton href={`/${text.toLowerCase()}`}
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? 'initial' : 'center',
+                  px: 2.5,
+                }}
+              >
+                <ListItemIcon style={{color:"red"}}
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : 'auto',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {index % 2 === 0 ? <PersonIcon /> : <ListAltIcon />  }
+                </ListItemIcon>
+                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
+    <Addpage/> 
+      </Box>
     </Box>
-      </CardContent>
-    </Card>
-
-    <Card sx={{ Width: "40%" ,marginTop:"45px"}}>
-         <Typography variant="h5" component="div" style={{marginLeft:"-840px"}}>
-         Project Attachments
-        </Typography>
-      <CardContent>
-    <Button  style={{width: '60ch',marginLeft:"-10px",backgroundColor:'#FA2609'}}
-      component="label"
-      role={undefined}
-      variant="contained"
-      tabIndex={-1}
-      startIcon={<CloudUploadIcon />}
-    >
-      Upload SOW
-      <VisuallyHiddenInput type="file" />
-    </Button> 
-    
-    <Button  style={{width: '60ch',marginLeft:"60px",marginTop:"0px",backgroundColor:'#FA2609'}}
-      component="label"
-      role={undefined}
-      variant="contained"
-      tabIndex={-1}
-      startIcon={<CloudUploadIcon />}
-    >
-      Upload SD
-      <VisuallyHiddenInput type="file" />
-    </Button> 
-
-    <Button  style={{width: '60ch',marginLeft:"-10px",marginTop:"30px",backgroundColor:'#FA2609'}}
-      component="label"
-      role={undefined}
-      variant="contained"
-      tabIndex={-1}
-      startIcon={<CloudUploadIcon />}
-    >
-    Upload BRD
-      <VisuallyHiddenInput type="file" />
-    </Button> 
-    
-    <Button  style={{width: '60ch',marginLeft:"60px",marginTop:"30px",backgroundColor:'#FA2609'}}
-      component="label"
-      role={undefined}
-      variant="contained"
-      tabIndex={-1}
-      startIcon={<CloudUploadIcon />}
-    >
-      Upload SOP
-      <VisuallyHiddenInput type="file" />
-    </Button> 
-    
-      </CardContent>
-    </Card>
-    <Card sx={{ Width: "40%" ,marginTop:"45px"}}>
-         <Typography variant="h5" component="div" style={{marginLeft:"-840px"}}>
-         Status Report 
-        </Typography>
-      <CardContent>
-    <Button  style={{width: '60ch',marginLeft:"-540px",backgroundColor:'#FA2609'}}
-      component="label"
-      role={undefined}
-      variant="contained"
-      tabIndex={-1}
-      startIcon={<CloudUploadIcon />}
-    >
-      Upload Report
-      <VisuallyHiddenInput type="file" />
-    </Button> 
-      </CardContent>
-    </Card>
-
-    <Button  style={{width:'60ch',marginLeft:"60px",marginTop:"30px",backgroundColor:'#FA2609'}}
-      component="label"
-      role={undefined}
-      variant="contained"
-      tabIndex={-1}
-    >
-      Save 
-    </Button> 
-    </>
   );
 }

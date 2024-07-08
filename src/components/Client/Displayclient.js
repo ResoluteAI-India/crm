@@ -25,7 +25,7 @@ import Accountbutton from '../MiniComponents/Accountbutton';
 import Breadcrumbs from '../MiniComponents/Breadcrumbs';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ArticleIcon from '@mui/icons-material/Article';
-import Addclient from './Addclient';
+import Displaypage from './Displaypage';
 
 const drawerWidth = 240;
 
@@ -94,7 +94,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function Try() {
+export default function Displayclient() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
@@ -187,7 +187,7 @@ export default function Try() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-    <Addclient/> 
+    <Displaypage/> 
       </Box>
     </Box>
   );
