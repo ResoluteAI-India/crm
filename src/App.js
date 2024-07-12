@@ -4,20 +4,13 @@ import Signup from "./components/Authentication/Signup"
 import Login from "./components/Authentication/Login"
 import {useFirebase} from "./context/Firebase"
 import Dashboard from './components/Dashboard/Dashboard';
-import Client from './components/Client/Client';
-import Project from './components/Project/Project';
-// import Addclient from "./components/Client/Addclient"
-// import Editclient from "./components/Client/Editclient"
-import Displayclient from './components/Client/Displayclient';
-// import Addproject from './components/Project/Addproject';
-// import Editproject from './components/Project/Editproject';
-import Displayproject from './components/Project/Displayproject';
-
+import Addclient from "./components/Client/Addclient";
+import Addproject from './components/Project/Addproject';
+import Log from "./components/Log/Log"
+import Displayclient from "./components/Client/Displayclient"
 
 
 function App() {
-
-  const firebase = useFirebase();
 
   return (
 <Router>
@@ -26,16 +19,18 @@ function App() {
     <Route path ="/login" element = {<center><Login/></center>} />
     <Route path ="/dashboard" element = {<center><Dashboard/></center>} />
 
-    <Route path ="/client" element = {<center><Client/></center>} />
-    {/* <Route path ="/addclient" element = {<center><Addclient/></center>} /> */}
-    {/* <Route path ="/editclient" element = {<center><Editclient/></center>} /> */}
+    <Route path ="/client" element = {<center><Addclient/></center>} />
     <Route path ="/displayclient" element = {<center><Displayclient/></center>} />
 
-    <Route path ="/project" element = {<center><Project/></center>} />
-    {/* <Route path ="/addproject" element = {<center><Addproject/></center>} />
-    <Route path ="/editproject" element = {<center><Editproject/></center>} /> */}
-    <Route path ="/displayproject" element = {<center><Displayproject/></center>} />
+    {/* <Route path ="/editclient" element = {<center><Editclient/></center>} /> */}
 
+   <Route path ="/project" element = {<center><Addproject/></center>} />
+
+    {/* <Route path ="/editproject" element = {<center><Editproject/></center>} />
+    <Route path ="/displayproject" element = {<center><Displayproject/></center>} />  */}
+
+    <Route path ="/log" element = {<center><Log/></center>} />
+  
   
   </Routes>
   </Router>

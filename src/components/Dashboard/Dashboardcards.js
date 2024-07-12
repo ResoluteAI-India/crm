@@ -6,7 +6,6 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-// import Dashboarddensetable from '../../Previous/Dashboardtable'
 import IconButton from '@mui/material/IconButton';
 import PeopleOutlineRoundedIcon from '@mui/icons-material/PeopleOutlineRounded';
 import ListAltRoundedIcon from '@mui/icons-material/ListAltRounded';
@@ -47,29 +46,6 @@ export default function Dashboardcards() {
     projectgetUsers(); 
     clientgetUsers();                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
   }, []);
-
-    // const empCollectionRef = collection(firebase.db, "projects");
-    //  const getUsers = async () => {
-    //    const data = await getDocs(empCollectionRef);
-    //    console.log(data.count)
-
-    //    }; 
-
-// const getUsers = async () => {
-//   const coll = collection(firebase.db, "projects");
-//   const snapshot = await getCountFromServer(coll);
-//   console.log('count: ', snapshot.data().count);
-//      }; 
-// const [pro,setPro] = useState(0)
-// const empCollectionRef = collection(firebase.db, "clients");
-
-// const getUsers = async () => {
-//   const data = await getDocs(empCollectionRef);
-//   setPro(data.docs.count);
-// };
-// console.log(pro)
-
-
 
   return (
     <>
@@ -128,7 +104,7 @@ export default function Dashboardcards() {
            <b>On going Projects</b>
           </Typography>
           <Typography component="div" variant="h5">
-           25
+          
           </Typography>
         </CardContent>
       </Box>

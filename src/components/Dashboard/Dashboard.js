@@ -22,7 +22,7 @@ import Dashboardcards from './Dashboardcards';
 import Breadcrumbs from '../MiniComponents/Breadcrumbs';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import DashboardIcon from '@mui/icons-material/Dashboard';
-
+import ArticleIcon from '@mui/icons-material/Article';
 
 const drawerWidth = 240;
 
@@ -133,30 +133,31 @@ export default function Dashboard() {
             {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
           </IconButton>
         </DrawerHeader>
-        <List style={{color:"black"}}>
-          {['Dashboard'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton href={`/${text.toLowerCase()}`}
+        <List style={{color:"black"}} >
+          {['Dashboard', 'Log'].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: 'block' }} >
+              <ListItemButton href={`/${text.toLowerCase()}`} 
                 sx={{
-                  minHeight: 18,
+                  minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
               >
                 <ListItemIcon style={{color:"red"}}
                   sx={{
-                    minWidth: 0, 
+                    minWidth: 0,
                     mr: open ? 3 : 'auto',
                     justifyContent: 'center',
                   }}
                 >
-                  <DashboardIcon />  
+                  {index % 2 === 0 ? <DashboardIcon /> : <ArticleIcon />  }
                 </ListItemIcon>
                 <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
+
         <List style={{color:"black",marginTop:"-20px"}} >
           {['Client', 'Project'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }} >

@@ -28,13 +28,13 @@ export default function Accountbutton() {
     <Box sx={{ flexGrow: 1 }}>
           {auth && (
             <div>
-              <IconButton style={{marginLeft:"1050px"}}
+              <IconButton style={{marginLeft:"1000px"}}
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
                 onClick={handleMenu}
-                color="inherit"
+                color="gray"
               >
                 <AccountCircle   />
               </IconButton>

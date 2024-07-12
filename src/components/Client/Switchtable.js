@@ -3,9 +3,8 @@ import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
-import Displayclienttable from "../Client/Displayclienttable"
-
  import Projecttable from "../Client/Projecttable"
+ import Clientdocumentstable from './Clientdocumentstable';
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -36,7 +35,7 @@ function a11yProps(index) {
   };
 }
 
-export default function Switchclient() {
+export default function Switchtable({clientname}) {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
@@ -47,21 +46,20 @@ export default function Switchclient() {
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-          {/* <Tab  style={{color:"black"}} label="Clients" {...a11yProps(0)} /> */}
           <Tab  style={{color:"black"}} label="Projects" {...a11yProps(0)} />
           <Tab  style={{color:"black"}} label="Client Documents" {...a11yProps(1)} />
-          {/* <Tab  style={{color:"black"}} label="Client Spocs" {...a11yProps(3)} /> */}
         </Tabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
-      <Displayclienttable/>
+
+      <Projecttable clientname={clientname}/>
+      
        
       </CustomTabPanel>
       <CustomTabPanel value={value} index={1}>
-      <Projecttable/>
+       <Clientdocumentstable/> 
       
       </CustomTabPanel>
-      
     </Box>
   );
 }

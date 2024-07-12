@@ -19,7 +19,7 @@ import {
   addDoc,
   updateDoc,
   deleteDoc,
-  doc, collectionGroup, query, where
+  doc,
 } from "firebase/firestore";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -30,7 +30,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { useNavigate } from "react-router-dom"
 
 
-export default function Projecttable({clientname}) {
+export default function Logtable() {
   
   const navigate = useNavigate();
 
@@ -44,13 +44,11 @@ export default function Projecttable({clientname}) {
   },[]);
 
   const getUsers = async () => {
-    const empCollectionRef = collection(firebase.db, "Project");
+    const empCollectionRef = collection(firebase.db, "Client");
     const data = await getDocs(empCollectionRef);
     setRows(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
 
- const filteredrows = rows.filter(row => row.client_name == clientname)
-  
 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
@@ -60,11 +58,70 @@ export default function Projecttable({clientname}) {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
+  
+
+  const deleteClient = (id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.value) {
+        deleteApi(id);
+      }
+    });
+  };
+  const deleteApi = async (id) => {
+    const userDoc = doc(firebase.db, "Client",id);
+    await deleteDoc(userDoc);
+    Swal.fire("Your file has been deleted.");
+    getUsers();
+
+  };
+
+  
+  const filterData = (v) => {
+    if (v) {
+      setRows([v]);
+    } else {
+      setRows([]);
+      getUsers();
+    }
+  };
+
+
+  const clientDisplay = (id,client_name,industry_type,email,phone,address,comment,service_type,core_skills,payment_terms,bank_name,account_holder_name,account_number,branch_name,ifsc_code,agreement_start_date,agreement_end_date,spoc) =>{
+  navigate("/displayclient" ,{state:{id,client_name,industry_type,email,phone,address,comment,service_type,core_skills,payment_terms,bank_name,account_holder_name,account_number,branch_name,ifsc_code,agreement_start_date,agreement_end_date,spoc}}) 
+}
 
   return (
     <>
+    
+    <Stack direction="row" spacing={2} className="my-2 mb-2" style={{marginLeft:"55px"}}>
+            <Autocomplete
+              disablePortal
+              id="combo-box-demo"
+              options={rows}
+              sx={{ width: 200}}
+              onChange={(e, v) => filterData(v)}
+              getOptionLabel={(rows) => rows.client_name || ""}
+              renderInput={(params) => (
+                <TextField {...params} size="small" label="Search Client" />
+              )}
+            />
+            <Typography 
+              variant="h6"
+              component="div"
+              sx={{ flexGrow: 1 }}
+            >
+            </Typography>
+    </Stack>
 
-   { filteredrows.length > 0 && 
+   { rows.length > 0 && 
     <Paper sx={{ width: '90%', overflow: 'hidden',marginTop:"30px" }} >
        <Box height={20} />
       <TableContainer sx={{ maxHeight: 350,marginTop:"-18px" }}>
@@ -75,27 +132,21 @@ export default function Projecttable({clientname}) {
               <b>Client ID</b> 
              </TableCell>
              <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2" }}>
-             <b>Project Name</b>
-             </TableCell>
-             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2" }}>
              <b>Client Name</b>
              </TableCell>
              <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2" }}>
-             <b>description</b>
+             <b>Email</b>
              </TableCell>
              <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2" }}>
-             <b>Agreement Start Date</b>
+             <b>Number</b>
              </TableCell>
              <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2" }}>
-             <b>Agreement End Date</b>
-             </TableCell>
-             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2" }}>
-             <b>Status</b>
+              <b>Action</b>
              </TableCell>
          </TableRow>
        </TableHead>
        <TableBody>
-         {filteredrows
+         {rows
            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
            .map((row) => {
              return (
@@ -104,23 +155,28 @@ export default function Projecttable({clientname}) {
                       {row.id}
                      </TableCell>
                      <TableCell align="left" >
-                      {row.project_name}
-                     </TableCell>
-                     <TableCell  align="left" >
                       {row.client_name}
                      </TableCell>
-                     <TableCell align="left">
-                      {row.description}
+                     <TableCell  align="left" >
+                      {row.email}
                      </TableCell>
                      <TableCell align="left">
-                      {row.agreement_start_date}
+                      {row.phone}
                      </TableCell>
-                     <TableCell align="left">
-                      {row.agreement_end_date}
-                     </TableCell>
-                     <TableCell align="left">
-                      {row.status}
-                     </TableCell>
+                        <TableCell align="left" >
+                          <Stack spacing={2} direction="row">
+                            <OpenInNewIcon  
+                              style={{
+                                fontSize: "20px",
+                                color: "red",
+                                cursor: "pointer",
+                                marginTop:"-20px",
+                              }}
+                              className="cursor-pointer"
+                            onClick={() => clientDisplay(row.id,row.client_name,row.industry_type,row.email,row.phone,row.address,row.comment,row.service_type,row.core_skills,row.payment_terms,row.bank_name,row.account_holder_name,row.account_number,row.branch_name,row.ifsc_code,row.agreement_start_date,row.agreement_end_date,row.spoc)}
+                            />
+                          </Stack>
+                        </TableCell>
                   </TableRow>
                 );
               })}

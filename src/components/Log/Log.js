@@ -7,8 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton'; 
+import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -16,16 +15,15 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import ListAltIcon from '@mui/icons-material/ListAlt';
 import PersonIcon from '@mui/icons-material/Person';
 import logo from "../../images/logo.jpg"
 import Accountbutton from '../MiniComponents/Accountbutton';
 import Breadcrumbs from '../MiniComponents/Breadcrumbs';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ArticleIcon from '@mui/icons-material/Article';
-import Displaypage from './Displaypage';
+import Logtable from './Logtable';
+
 
 const drawerWidth = 240;
 
@@ -94,7 +92,7 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function Displayclient() {
+export default function Log() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
@@ -160,10 +158,11 @@ export default function Displayclient() {
             </ListItem>
           ))}
         </List>
-        <List style={{color:"black",marginTop:"-20px"}}>
+
+        <List style={{color:"black",marginTop:"-20px"}} >
           {['Client', 'Project'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton href={`/${text.toLowerCase()}`}
+            <ListItem key={text} disablePadding sx={{ display: 'block' }} >
+              <ListItemButton href={`/${text.toLowerCase()}`} 
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -187,7 +186,7 @@ export default function Displayclient() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-    <Displaypage/> 
+        <Logtable/>
       </Box>
     </Box>
   );
