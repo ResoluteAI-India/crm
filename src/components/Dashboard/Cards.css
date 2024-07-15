@@ -1,0 +1,46 @@
+#card1{
+    background-color:rgba(255, 99, 132, 0.2) ;
+    border-radius: 15px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+  transition: 0.5s;
+  color: white;
+    
+}
+#card1:hover{
+  box-shadow: 0 0 3px white;
+  height: 130px;
+  width: 270px;
+  cursor: pointer;
+}
+
+#card2{
+    background-color: rgba(153, 102, 255, 0.2);
+    border-radius: 15px;
+    cursor: pointer;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+  transition: 0.5s;
+  color: white;
+
+}
+#card2:hover{
+  box-shadow: 0 0 3px white;
+  height: 130px;
+  width: 270px;
+}
+#card3{
+    background-color: rgba(54, 162, 235, 0.2);
+    border-radius: 15px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px;
+  transition: 0.5s;
+  cursor: pointer;
+  color: white;
+
+}
+#card3:hover{
+  box-shadow: 0 0 3px white;
+  height: 130px;
+  width: 270px;
+}

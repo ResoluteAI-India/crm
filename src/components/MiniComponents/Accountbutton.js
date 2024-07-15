@@ -28,7 +28,7 @@ export default function Accountbutton() {
     <Box sx={{ flexGrow: 1 }}>
           {auth && (
             <div>
-              <IconButton style={{marginLeft:"1000px"}}
+              <IconButton style={{marginLeft:"1000px",color:"black"}}
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"

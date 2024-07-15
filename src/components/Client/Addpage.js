@@ -351,7 +351,6 @@ options={payment_terms_values}
                     autoComplete="current-name"
                     name='full_name'
                     onChange={(e)=>handleChange(e,i)}
-                    // value={full_name}  onChange={handleFull_name}
                     />
                      </TableCell>
                      <TableCell align="left" >
@@ -362,7 +361,6 @@ options={payment_terms_values}
                     autoComplete="current-designation"
                     name='designation'
                     onChange={(e)=>handleChange(e,i)}
-                    // value={designation} onChange={handleDesignation}
                     />
                      </TableCell>
                      <TableCell  align="left" >
@@ -374,7 +372,6 @@ options={payment_terms_values}
                         name='spoc_number'
 
                         onChange={(e)=>handleChange(e,i)}
-                        // value={spoc_number} onChange={handlespocnumber}
                         />
                      </TableCell>
                      <TableCell align="left">
@@ -385,7 +382,6 @@ options={payment_terms_values}
                         autoComplete="current-email"
                         name='spoc_email'
                     onChange={(e)=>handleChange(e,i)}
-                        // value={spoc_email} onChange={handlespocemail}
                         />
                      </TableCell>
                     

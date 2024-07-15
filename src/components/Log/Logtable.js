@@ -127,20 +127,20 @@ export default function Logtable() {
       <TableContainer sx={{ maxHeight: 350,marginTop:"-18px" }}>
         <Table stickyHeader aria-label="sticky table" >
          <TableHead >
-         <TableRow  >
-             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2"}}>
+         <TableRow >
+             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE"}}>
               <b>Client ID</b> 
              </TableCell>
-             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2" }}>
+             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE" }}>
              <b>Client Name</b>
              </TableCell>
-             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2" }}>
+             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE" }}>
              <b>Email</b>
              </TableCell>
-             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2" }}>
+             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE" }}>
              <b>Number</b>
              </TableCell>
-             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#E5E4E2" }}>
+             <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE" }}>
               <b>Action</b>
              </TableCell>
          </TableRow>
