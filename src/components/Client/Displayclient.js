@@ -7,8 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
 import CssBaseline from '@mui/material/CssBaseline';
 import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton'; 
+import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
@@ -16,16 +15,14 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import ListAltIcon from '@mui/icons-material/ListAlt';
 import PersonIcon from '@mui/icons-material/Person';
-import logo from "../../images/logo.jpg"
+import logo from "../../images/resolutelogo.png"
 import Accountbutton from '../MiniComponents/Accountbutton';
-import Breadcrumbs from '../MiniComponents/Breadcrumbs';
+// import Breadcrumbs from '../MiniComponents/Breadcrumbs';
+import ListAltIcon from '@mui/icons-material/ListAlt';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ArticleIcon from '@mui/icons-material/Article';
-import Displaypage from './Displaypage';
+import Displaypage from "./Displaypage"
 
 const drawerWidth = 240;
 
@@ -94,7 +91,12 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
-export default function Displayclient() {
+const handleColor = () =>{
+  let btn = document.getElementById("clickedbtn")
+  btn.style.backgroundColor="#F2F2F2"
+}
+
+export default function Clients() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
@@ -105,11 +107,10 @@ export default function Displayclient() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex'}} >
       <CssBaseline />
-      <AppBar position="fixed" open={open}  style={{backgroundColor:"white"}}>
+      <AppBar position="fixed" open={open}  style={{backgroundColor:"#EEEEEE",height:"50px"}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -121,32 +122,36 @@ export default function Displayclient() {
               ...(open && { display: 'none' }),
             }}
           >
-            <MenuIcon />
+            <MenuIcon style={{color:"#987D9A",backgroundColor:"#F2F2F2"}} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            ResoluteAI
-          </Typography>
           <Accountbutton />
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-        <img src={logo} alt=""  className='mylogo' style={{height:"60px",width:"180px"}}/>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+      <Drawer variant="permanent" open={open}  PaperProps={{
+    sx: {
+      backgroundColor: "#EEEEEE"
+    }
+  }} >
+        <DrawerHeader style={{backgroundColor:"#EEEEEE"}} >
+        <img src={logo} alt=""  className='mylogo' style={{height:"50px",width:"180px"}}/>
+          <IconButton onClick={handleDrawerClose} >
+            {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon  />}
           </IconButton>
         </DrawerHeader>
-        <List style={{color:"black"}} >
+        <List style={{color:"#987D9A"}} >
           {['Dashboard', 'Log'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }} >
+            <ListItem key={text} disablePadding sx={{ display: 'block'}} >
               <ListItemButton href={`/${text.toLowerCase()}`} 
+              id='clickedbtn'
+              onClick={handleColor}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                
               >
-                <ListItemIcon style={{color:"red"}}
+                <ListItemIcon style={{color:"#987D9A"}}
                   sx={{
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
@@ -160,17 +165,18 @@ export default function Displayclient() {
             </ListItem>
           ))}
         </List>
-        <List style={{color:"black",marginTop:"-20px"}}>
-          {['Client', 'Project'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton href={`/${text.toLowerCase()}`}
+
+        <List style={{color:"#987D9A",marginTop:"-20px"}} >
+          {['Clients', 'Projects'].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: 'block' }} >
+              <ListItemButton href={`/${text.toLowerCase()}`} 
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
               >
-                <ListItemIcon style={{color:"red"}}
+                <ListItemIcon style={{color:"#987D9A"}}
                   sx={{
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
@@ -185,10 +191,11 @@ export default function Displayclient() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-    <Displaypage/> 
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }} style={{backgroundColor:"#f2f2f2",height:"100vh",width:"100vw"}}>
+        {/* <Breadcrumbs/> */}
+        <Displaypage/>
       </Box>
     </Box>
+    
   );
 }

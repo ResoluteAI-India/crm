@@ -30,7 +30,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { useNavigate } from "react-router-dom"
 
 
-export default function Logtable() {
+export default function Projectable() {
   
   const navigate = useNavigate();
 
@@ -44,7 +44,7 @@ export default function Logtable() {
   },[]);
 
   const getUsers = async () => {
-    const empCollectionRef = collection(firebase.db, "Client");
+    const empCollectionRef = collection(firebase.db, "Project");
     const data = await getDocs(empCollectionRef);
     setRows(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
   };
@@ -94,13 +94,8 @@ export default function Logtable() {
   };
 
 
-  const clientDisplay = (id,client_name,industry_type,email,phone,address,comment,service_type,core_skills,payment_terms,bank_name,account_holder_name,account_number,branch_name,ifsc_code,agreement_start_date,agreement_end_date,spoc) =>{
-  navigate("/displayclient" ,{state:{id,client_name,industry_type,email,phone,address,comment,service_type,core_skills,payment_terms,bank_name,account_holder_name,account_number,branch_name,ifsc_code,agreement_start_date,agreement_end_date,spoc}}) 
-}
-
   return (
     <>
-    
     <Stack direction="row" spacing={2} className="my-2 mb-2" style={{marginLeft:"55px"}}>
             <Autocomplete
               disablePortal
@@ -109,7 +104,7 @@ export default function Logtable() {
               style={{marginTop:"50px"}}
               sx={{ width: 200}}
               onChange={(e, v) => filterData(v)}
-              getOptionLabel={(rows) => rows.client_name || ""}
+              getOptionLabel={(rows) => rows.project_name || ""}
               renderInput={(params) => (
                 <TextField {...params} size="small" label="Search Client" />
               )}
@@ -130,20 +125,24 @@ export default function Logtable() {
          <TableHead >
          <TableRow >
              <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE"}}>
-              <b>Client ID</b> 
+              <b>Project Name</b> 
              </TableCell>
              <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE" }}>
              <b>Client Name</b>
              </TableCell>
              <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE" }}>
-             <b>Email</b>
+             <b>description</b>
              </TableCell>
              <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE" }}>
-             <b>Number</b>
+             <b>Agreement Start Date</b>
+             </TableCell>
+              <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE" }}>
+             <b>Agreement End Date</b>
              </TableCell>
              <TableCell align="left" style={{ minWidth: "100px", backgroundColor:"#EEEEEE" }}>
-              <b>Action</b>
+             <b>Status</b>
              </TableCell>
+           
          </TableRow>
        </TableHead>
        <TableBody>
@@ -153,31 +152,23 @@ export default function Logtable() {
              return (
                <TableRow hover role="checkbox" tabIndex={-1} key={row.id}>
                      <TableCell  align="left" >
-                      {row.id}
+                      {row.project_name}
                      </TableCell>
                      <TableCell align="left" >
                       {row.client_name}
                      </TableCell>
                      <TableCell  align="left" >
-                      {row.email}
+                      {row.description}
                      </TableCell>
                      <TableCell align="left">
-                      {row.phone}
+                      {row.agreement_start_date}
                      </TableCell>
-                        <TableCell align="left" >
-                          <Stack spacing={2} direction="row">
-                            <OpenInNewIcon  
-                              style={{
-                                fontSize: "20px",
-                                color: "red",
-                                cursor: "pointer",
-                                marginTop:"-20px",
-                              }}
-                              className="cursor-pointer"
-                            onClick={() => clientDisplay(row.id,row.client_name,row.industry_type,row.email,row.phone,row.address,row.comment,row.service_type,row.core_skills,row.payment_terms,row.bank_name,row.account_holder_name,row.account_number,row.branch_name,row.ifsc_code,row.agreement_start_date,row.agreement_end_date,row.spoc)}
-                            />
-                          </Stack>
-                        </TableCell>
+                     <TableCell align="left">
+                      {row.agreement_end_date}
+                     </TableCell>
+                     <TableCell align="left">
+                      {row.status}
+                     </TableCell>
                   </TableRow>
                 );
               })}

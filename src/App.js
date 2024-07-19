@@ -4,11 +4,11 @@ import Signup from "./components/Authentication/Signup"
 import Login from "./components/Authentication/Login"
 import {useFirebase} from "./context/Firebase"
 import Dashboard from './components/Dashboard/Dashboard';
-import Addclient from "./components/Client/Addclient";
-import Addproject from './components/Project/Addproject';
+import Clients from "./components/Client/Clients";
+import Projects from './components/Project/Projects';
 import Log from "./components/Log/Log"
 import Displayclient from "./components/Client/Displayclient"
-
+import Addholder from './components/Client/Addholder';
 
 function App() {
 
@@ -19,12 +19,13 @@ function App() {
     <Route path ="/login" element = {<center><Login/></center>} />
     <Route path ="/dashboard" element = {<center><Dashboard/></center>} />
 
-    <Route path ="/client" element = {<center><Addclient/></center>} />
+    <Route path ="/clients" element = {<center><Clients/></center>} />
+    <Route path ="/addclient" element = {<center><Addholder/></center>} />
     <Route path ="/displayclient" element = {<center><Displayclient/></center>} />
 
     {/* <Route path ="/editclient" element = {<center><Editclient/></center>} /> */}
 
-   <Route path ="/project" element = {<center><Addproject/></center>} />
+   <Route path ="/projects" element = {<center><Projects/></center>} />
 
     {/* <Route path ="/editproject" element = {<center><Editproject/></center>} />
     <Route path ="/displayproject" element = {<center><Displayproject/></center>} />  */}
