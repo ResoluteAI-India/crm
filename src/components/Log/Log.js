@@ -16,14 +16,13 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PersonIcon from '@mui/icons-material/Person';
-import logo from "../../images/logo.jpg"
+import logo from "../../images/resolutelogo.png"
 import Accountbutton from '../MiniComponents/Accountbutton';
-import Breadcrumbs from '../MiniComponents/Breadcrumbs';
+// import Breadcrumbs from '../MiniComponents/Breadcrumbs';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ArticleIcon from '@mui/icons-material/Article';
 import Logtable from './Logtable';
-
 
 const drawerWidth = 240;
 
@@ -92,6 +91,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
   }),
 );
 
+const handleColor = () =>{
+  let btn = document.getElementById("clickedbtn")
+  btn.style.backgroundColor="#F2F2F2"
+}
+
 export default function Log() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
@@ -103,11 +107,10 @@ export default function Log() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex'}} >
       <CssBaseline />
-      <AppBar position="fixed" open={open}  style={{backgroundColor:"white"}}>
+      <AppBar position="fixed" open={open}  style={{backgroundColor:"#EEEEEE",height:"50px"}}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -119,32 +122,36 @@ export default function Log() {
               ...(open && { display: 'none' }),
             }}
           >
-            <MenuIcon />
+            <MenuIcon style={{color:"#987D9A",backgroundColor:"#F2F2F2"}} />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            ResoluteAI
-          </Typography>
           <Accountbutton />
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-        <img src={logo} alt=""  className='mylogo' style={{height:"60px",width:"180px"}}/>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+      <Drawer variant="permanent" open={open}  PaperProps={{
+    sx: {
+      backgroundColor: "#EEEEEE"
+    }
+  }} >
+        <DrawerHeader style={{backgroundColor:"#EEEEEE"}} >
+        <img src={logo} alt=""  className='mylogo' style={{height:"50px",width:"180px"}}/>
+          <IconButton onClick={handleDrawerClose} >
+            {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon  />}
           </IconButton>
         </DrawerHeader>
-        <List style={{color:"black"}} >
+        <List style={{color:"#987D9A"}} >
           {['Dashboard', 'Log'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }} >
+            <ListItem key={text} disablePadding sx={{ display: 'block'}} >
               <ListItemButton href={`/${text.toLowerCase()}`} 
+              id='clickedbtn'
+              onClick={handleColor}
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                
               >
-                <ListItemIcon style={{color:"red"}}
+                <ListItemIcon style={{color:"#987D9A"}}
                   sx={{
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
@@ -159,8 +166,8 @@ export default function Log() {
           ))}
         </List>
 
-        <List style={{color:"black",marginTop:"-20px"}} >
-          {['Client', 'Project'].map((text, index) => (
+        <List style={{color:"#987D9A",marginTop:"-20px"}} >
+          {['Clients', 'Projects'].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: 'block' }} >
               <ListItemButton href={`/${text.toLowerCase()}`} 
                 sx={{
@@ -169,7 +176,7 @@ export default function Log() {
                   px: 2.5,
                 }}
               >
-                <ListItemIcon style={{color:"red"}}
+                <ListItemIcon style={{color:"#987D9A"}}
                   sx={{
                     minWidth: 0,
                     mr: open ? 3 : 'auto',
@@ -184,10 +191,11 @@ export default function Log() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }} style={{backgroundColor:"#f2f2f2",height:"100vh",width:"100vw"}}>
+        {/* <Breadcrumbs/> */}
         <Logtable/>
       </Box>
     </Box>
+    
   );
 }

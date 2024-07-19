@@ -38,7 +38,6 @@ import ControlPointRoundedIcon from '@mui/icons-material/ControlPointRounded';
 import RemoveCircleOutlineRoundedIcon from '@mui/icons-material/RemoveCircleOutlineRounded';
 
 
-
 const VisuallyHiddenInput = styled('input')({
   clip: 'rect(0 0 0 0)',
   clipPath: 'inset(50%)',
@@ -64,9 +63,8 @@ const bull = (
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
   
-export default function Addpage() {
+export default function Addclientpage() {
   let date = new Date();
-
   const [rows, setRows] = useState([]);
 
   const navigate = useNavigate();
@@ -204,15 +202,15 @@ const createClient = async() =>{
   })
   getUsers()
   Swal.fire("Your file has been Saved")
-
+navigate("/clients")
 }
   return (
     <>
-    <Typography variant="h4" component="div" style={{marginLeft:"-810px",marginBottom:"10px"}}>
+    <Typography variant="h4" component="div" style={{marginTop:"40px",marginLeft:"-880px",marginBottom:"10px"}}>
          <b>Add Client</b>
         </Typography>
-    <Card sx={{ Width: "40%" ,marginTop:"45px"}}>
-         <Typography variant="h5" component="div" style={{marginLeft:"-830px"}}>
+    <Card sx={{ Width: "40%" ,marginTop:"25px"}}>
+         <Typography variant="h5" component="div" style={{marginLeft:"-830px",marginTop:"15px"}}>
         Basic Details
         </Typography>
       <CardContent>
@@ -232,8 +230,8 @@ const createClient = async() =>{
       </CardContent>
     </Card>
 
-    <Card sx={{ Width: "40%" ,marginTop:"45px"}}>
-         <Typography variant="h5" component="div" style={{marginLeft:"-865px"}}>
+    <Card sx={{ Width: "40%" ,marginTop:"20px"}}>
+         <Typography variant="h5" component="div" style={{marginLeft:"-865px",marginTop:"15px"}}>
          Preferences
         </Typography>
       <CardContent>
@@ -249,24 +247,15 @@ options={service_type_values}
 
 <Autocomplete
   id="combo-box-demo"
-options={core_skills_values}
-  sx={{width: '53ch',marginLeft:"495px",marginTop:"-55px"}}
-  renderInput={(params) => <TextField {...params} label="Core Skills" />}
-  onChange={(event,value)=>setCore_skills(value)}
-/>
-
-<Autocomplete
-  
-  id="combo-box-demo"
 options={payment_terms_values}
-  sx={{ width: '53ch',marginTop:"20px",marginLeft:"-520px" }}
+  sx={{width: '53ch',marginLeft:"495px",marginTop:"-55px"}}
   renderInput={(params) => <TextField {...params} label="Payment Terms" />}
   onChange={(event,value)=>setPayment_terms(value)}
 />
       </CardContent>
     </Card>
-    <Card sx={{ Width: "40%" ,marginTop:"45px"}}>
-         <Typography variant="h5" component="div" style={{marginLeft:"-865px"}}>
+    <Card sx={{ Width: "40%" ,marginTop:"20px"}}>
+         <Typography variant="h5" component="div" style={{marginLeft:"-865px",marginTop:"15px"}}>
          Bank Details
         </Typography>
       <CardContent>
@@ -286,8 +275,8 @@ options={payment_terms_values}
       </CardContent>
     </Card>
 
-<Card sx={{ Width: "40%" ,marginTop:"45px"}}>
-         <Typography variant="h5" component="div" style={{marginLeft:"-810px"}}>
+<Card sx={{ Width: "40%" ,marginTop:"20px"}}>
+         <Typography variant="h5" component="div" style={{marginLeft:"-810px",marginTop:"15px"}}>
          Agreement Tenure
         </Typography>
       <CardContent>
@@ -308,7 +297,7 @@ options={payment_terms_values}
       </CardContent>
     </Card>
 
-    <Card sx={{ Width: "40%" ,marginTop:"45px",backgroundColor:"#F8C8DC"}}>
+    <Card sx={{ Width: "40%" ,marginTop:"20px",backgroundColor:"#F8C8DC"}}>
       <CardContent>
       <Typography variant="h5" component="div" style={{marginLeft:"-870px"}}>
          SPOC Details
@@ -441,12 +430,12 @@ options={payment_terms_values}
       {/* <Spocstable/> */}
     </Card>
 
-    <Card sx={{ Width: "40%" ,marginTop:"45px"}}>
-         <Typography variant="h5" component="div" style={{marginLeft:"-840px"}}>
+    <Card sx={{ Width: "40%" ,marginTop:"20px"}}>
+         <Typography variant="h5" component="div" style={{marginLeft:"-840px",marginTop:"15px"}}>
          Add Documents
         </Typography>
       <CardContent>
-    <Button  style={{width: '60ch',marginLeft:"-20px",backgroundColor:'#F8C8DC'}}
+    <Button  style={{width: '60ch',marginLeft:"-20px",backgroundColor:'#F8C8DC',color:"black"}}
       component="label"
       role={undefined}
       variant="contained"
@@ -457,7 +446,7 @@ options={payment_terms_values}
       <VisuallyHiddenInput type="file" />
     </Button> 
 
-    <Button  style={{width: '60ch',marginLeft:"60px",backgroundColor:'#F8C8DC'}}
+    <Button  style={{width: '60ch',marginLeft:"60px",backgroundColor:'#F8C8DC',color:"black"}}
       component="label"
       role={undefined}
       variant="contained"
@@ -468,7 +457,7 @@ options={payment_terms_values}
       <VisuallyHiddenInput type="file" />
     </Button> 
     
-    <Button  style={{width: '60ch',marginLeft:"-20px",marginTop:"30px",backgroundColor:'#F8C8DC'}}
+    <Button  style={{width: '60ch',marginLeft:"-20px",marginTop:"30px",backgroundColor:'#F8C8DC',color:"black"}}
       component="label"
       role={undefined}
       variant="contained"
@@ -479,7 +468,7 @@ options={payment_terms_values}
       <VisuallyHiddenInput type="file" />
     </Button> 
 
-    <Button  style={{width: '60ch',marginLeft:"60px",marginTop:"30px",backgroundColor:'#F8C8DC'}}
+    <Button  style={{width: '60ch',marginLeft:"60px",marginTop:"30px",backgroundColor:'#F8C8DC',color:"black"}}
       component="label"
       role={undefined}
       variant="contained"
@@ -493,7 +482,7 @@ options={payment_terms_values}
       </CardContent>
     </Card>
 
-    <Button  style={{width: '100ch',marginLeft:"60px",marginTop:"30px",backgroundColor:'#F8C8DC'}}
+    <Button  style={{width: '100ch',marginLeft:"60px",marginTop:"20px",marginBottom:"20px",backgroundColor:'#F8C8DC',color:"black"}}
       component="label"
       role={undefined}
       variant="contained"

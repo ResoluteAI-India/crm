@@ -61,10 +61,10 @@ export default function Dashboardcards() {
     <div id='mycards' style={{marginTop:"70px"}}>
       <Card id='card1' sx={{ display: 'flex' ,marginTop:"10px",marginLeft:"5px",height:110,width:250}}> 
         <CardContent sx={{ flex: '1 0 auto' }} style={{marginTop:"20px"}}>
-          <Typography variant="subtitle1" color="white" component="div">
+          <Typography variant="subtitle1" color="black" component="div">
             <b>Total client</b>
           </Typography>
-          <Typography component="div" variant="h5">
+          <Typography component="div" variant="h5" color="black">
           {clientcount}
           </Typography>
         </CardContent>
@@ -97,7 +97,6 @@ export default function Dashboardcards() {
       <Card  sx={{ display: 'flex' ,marginTop:"50px",marginLeft:"-5px"}}>
         <CardContent sx={{ flex: '1 0 auto' }} style={{marginLeft:"30px",marginTop:"20px"}}>
         <Bar
-
         data={{
           labels:['January', 'February', 'March', 'April', 'May'],
           datasets:[
@@ -137,13 +136,12 @@ export default function Dashboardcards() {
                 'rgb(153, 102, 255)',
                 'rgb(255, 159, 64)'
               ],
-              borderWidth: 1
-              
+              borderWidth: 1 
             }
           ]
-          
         }}
         />
+        
         </CardContent>
     </Card>
 
@@ -265,7 +263,7 @@ export default function Dashboardcards() {
       
       </div> 
       <Card  sx={{ display: 'flex' ,marginTop:"40px",marginLeft:"5px"}}>
-        <CardContent sx={{ flex: '1 0 auto' }} style={{marginLeft:"5px",marginTop:"20px"}}>
+        <CardContent sx={{ flex: '1 0 auto' }} style={{marginLeft:"5px",marginTop:"-50px"}}>
         <Logtable/>
         </CardContent>
         </Card>

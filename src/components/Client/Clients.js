@@ -18,11 +18,11 @@ import ListItemText from '@mui/material/ListItemText';
 import PersonIcon from '@mui/icons-material/Person';
 import logo from "../../images/resolutelogo.png"
 import Accountbutton from '../MiniComponents/Accountbutton';
-import Dashboardcards from './Dashboardcards';
 // import Breadcrumbs from '../MiniComponents/Breadcrumbs';
 import ListAltIcon from '@mui/icons-material/ListAlt';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import ArticleIcon from '@mui/icons-material/Article';
+import Clientsinfo from './Clientsinfo';
 
 const drawerWidth = 240;
 
@@ -96,7 +96,7 @@ const handleColor = () =>{
   btn.style.backgroundColor="#F2F2F2"
 }
 
-export default function Dashboard() {
+export default function Clients() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
 
@@ -191,9 +191,9 @@ export default function Dashboard() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }} style={{backgroundColor:"#f2f2f2"}}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }} style={{backgroundColor:"#f2f2f2",height:"175vh",width:"100vw"}}>
         {/* <Breadcrumbs/> */}
-   <Dashboardcards/>
+        <Clientsinfo />
       </Box>
     </Box>
     
