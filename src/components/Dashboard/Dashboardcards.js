@@ -59,7 +59,7 @@ export default function Dashboardcards() {
     <div className="page" style={{display:"flex"}}>
       <div className="main">
     <div id='mycards' style={{marginTop:"70px"}}>
-      <Card id='card1' sx={{ display: 'flex' ,marginTop:"10px",marginLeft:"5px",height:110,width:250}}> 
+      <Card id='card1' sx={{ display: 'flex' ,marginTop:"10px",marginLeft:"-40px",height:110,width:250}}> 
         <CardContent sx={{ flex: '1 0 auto' }} style={{marginTop:"20px"}}>
           <Typography variant="subtitle1" color="black" component="div">
             <b>Total client</b>
@@ -70,7 +70,7 @@ export default function Dashboardcards() {
         </CardContent>
     </Card>
 
-      <Card  id='card2' sx={{ display: 'flex' ,marginTop:"10px",marginLeft:"5px",height:110,width:250}}>
+      <Card  id='card2' sx={{ display: 'flex' ,marginTop:"10px",marginLeft:"25px",height:110,width:250}}>
         <CardContent sx={{ flex: '1 0 auto' }} style={{marginTop:"20px"}}>
           <Typography variant="subtitle1" color="white" component="div">
           <b>Total Projects</b>
@@ -81,7 +81,7 @@ export default function Dashboardcards() {
         </CardContent>
     </Card>
 
-      <Card  id='card3' sx={{ display: 'flex' ,marginTop:"10px",marginLeft:"5px",height:110,width:250}}>
+      <Card  id='card3' sx={{ display: 'flex' ,marginTop:"10px",marginLeft:"25px",marginRight:"-35px",height:110,width:250}}>
         <CardContent sx={{ flex: '1 0 auto' }} style={{marginTop:"20px"}}>
           <Typography variant="subtitle1" color="white" component="div">
            <b>On going Projects</b>
@@ -145,7 +145,7 @@ export default function Dashboardcards() {
         </CardContent>
     </Card>
 
-    <Card  sx={{ display: 'flex' ,marginTop:"40px",marginLeft:"-5px"}}>
+    <Card  sx={{ display: 'flex' ,marginTop:"20px",marginLeft:"-5px"}}>
         <CardContent sx={{ flex: '1 0 auto' }} style={{marginLeft:"30px",marginTop:"20px"}}>
         <Line
         data={{
@@ -262,7 +262,7 @@ export default function Dashboardcards() {
       </div>
       
       </div> 
-      <Card  sx={{ display: 'flex' ,marginTop:"40px",marginLeft:"5px"}}>
+      <Card  sx={{ display: 'flex' ,marginTop:"20px",marginLeft:"-5px"}}>
         <CardContent sx={{ flex: '1 0 auto' }} style={{marginLeft:"5px",marginTop:"-50px"}}>
         <Logtable/>
         </CardContent>
